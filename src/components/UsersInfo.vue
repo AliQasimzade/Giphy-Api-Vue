@@ -1,13 +1,6 @@
 <template>
 	<div class="container">
 		
-		<ul v-for="gif in gifs" :key="gif.images">
-			<li>
-				<a href="" download="">
-					<img :src="gif.images.fixed_height.url">
-				</a>
-			</li>
-		</ul>
 	</div>
 </template>
 

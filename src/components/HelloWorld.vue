@@ -1,35 +1,13 @@
 <template>
-	<div class="hello">
-		<h1 v-if="isLoading">Loading ...</h1>
-		<h1 v-if="!isLoading">{{ msg }}</h1>
-		<UsersInfo :gifs=gifs />
+	<div class="gif" v-for="gif in gifs" :key="gif">
+		<img :src="gif.media[0].gif.url" />
 	</div>
 </template>
 
 <script>
-import UsersInfo from './UsersInfo.vue';
 export default {
 	name: 'HelloWorld',
-	data() {
-		return {
-			gifs:[],
-			isLoading: true,
-		};
-	},
-	props: {
-		msg: {
-			type: Number,
-			required: false,
-		},
-	},
-	components:{
-		UsersInfo
-	},
-	created(){
-		fetch('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC')
-		.then(res =>  res.json())
-		.then(res => this.gifs = res.data)
-	}
+	props: ['gifs'],
 };
 </script>
 
