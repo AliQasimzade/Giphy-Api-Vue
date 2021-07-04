@@ -1,7 +1,7 @@
 <template>
   <p v-if="isLoading">Loading...</p>
   <Search v-on:SearchRequested="handleSearch" :str="str" />
-  <h3 v-if="isShow">{{ `${str} total result(${gifs.length}) :` }}</h3>
+  <h3 v-if="str">{{ `${str} total result(${gifs.length}) :` }}</h3>
   <HelloWorld :gifs="gifs" />
 </template>
 
@@ -66,24 +66,13 @@ export default {
 </script>
 
 <style>
+body{
+	margin: 0;
+	padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 
-.img {
-  animation: spin 1.3s infinite linear;
-}
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 </style>
