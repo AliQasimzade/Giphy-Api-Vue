@@ -1,7 +1,7 @@
 <template>
   <div class="gifs-container">
     <div class="gif" v-for="gif in gifs" :key="gif">
-      <a :href="gif.media[0].gif.url" target="_blank">
+      <a :href="gif.media[0].gif.url" download target="_blank">
         <img :src="gif.media[0].gif.url" />
       </a>
     </div>

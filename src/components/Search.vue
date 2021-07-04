@@ -6,14 +6,15 @@
       v-model="filter"
       @keypress.enter="handleSearch"
     />
-    <button @click="handleSearch">Search</button>
+    <button @click="handleSearch">Search</button>    
   </div>
+
 </template>
 
 <script>
 export default {
   name: "Serach",
- 
+ props:["str"],
   data() {
     return {
       filter: "",

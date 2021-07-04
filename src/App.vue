@@ -1,7 +1,8 @@
 <template>
   <p v-if="isLoading">Loading...</p>
-  <Search v-on:SearchRequested="handleSearch" v-if="!isLoading" />
-  <HelloWorld :gifs="gifs" v-if="!isLoading" />
+  <Search v-on:SearchRequested="handleSearch" :str="str" />
+  <h3 v-if="isShow">{{ `${str} total result(${gifs.length}) :` }}</h3>
+  <HelloWorld :gifs="gifs" />
 </template>
 
 <script>
@@ -13,12 +14,14 @@ export default {
   data: () => ({
     isLoading: true,
     gifs: [],
+    str: "",
+    isShow: false,
   }),
   methods: {
     handleSearch(filter) {
       this.gifs = [];
       this.isLoading = true;
-      fetch(`https://g.tenor.com/v1/search?q=${filter}&key=LIVDSRZULELAtrending`)
+      fetch(`https://g.tenor.com/v1/search?q=${filter}&key=LIVDSRZULELA`)
         .then((res) => {
           return res.json();
         })
@@ -27,6 +30,8 @@ export default {
           this.gifs = res.results;
           this.isLoading = false;
         });
+      this.isShow = true;
+      this.str = filter;
     },
   },
   created() {
@@ -39,8 +44,9 @@ export default {
         this.gifs = res.results;
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 400);
       });
+
     window.addEventListener("scroll", () => {
       if (
         document.body.scrollTop > 0 ||
@@ -60,16 +66,13 @@ export default {
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 
 .img {
