@@ -35,6 +35,7 @@ export default {
     },
   },
   created() {
+    
     fetch("https://g.tenor.com/v1/trending?key=LIVDSRZULELA")
       .then((res) => {
         return res.json();
@@ -66,13 +67,11 @@ export default {
 </script>
 
 <style>
-body{
-	margin: 0;
-	padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-
 }
-
 </style>
