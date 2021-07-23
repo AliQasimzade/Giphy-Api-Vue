@@ -35,7 +35,6 @@ export default {
     },
   },
   created() {
-    
     fetch("https://g.tenor.com/v1/trending?key=LIVDSRZULELA")
       .then((res) => {
         return res.json();
